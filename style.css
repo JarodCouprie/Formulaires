@@ -1,0 +1,38 @@
+:root{
+    --background-color: #f3f3f3;
+    --text-color: #153e70;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+body{
+    padding: 30px;
+    width: 100%;
+    height: 100%;
+    background: var(--text-color);
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    color: var(--background-color);
+}
+
+#titreFilm{
+    width: 800px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    
+}
+
+.saisie{
+    width: 800px;
+    border: none;
+    border-radius: 5px;
+}
