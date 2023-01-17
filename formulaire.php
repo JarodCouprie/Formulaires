@@ -14,13 +14,13 @@
 <body>
     <form method="post" action="traitement.php">
         <label for="">Titre du film</label><br>
-        <input type="text" name="titreFilm" class="saisie" id="titreFilm">
+        <input type="text" name="titreFilm" class="saisie">
         <br><br>
         <label for="">Description du film</label><br>
         <textarea name="descriptionFilm" id="description" cols="30" rows="10" class="saisie"></textarea>
         <br><br>
         <label for="">Date de sortie</label><br>
-        <input type="int" name="dateDeSortie" class="saisie">
+        <input type="int" name="dateDeSortie" class="saisie" id="date-de-sortie">
         <br><br>
         <select name="age" class="saisie">
             <option value="0">--- Sélection l'âge minimum ---</option>
@@ -33,7 +33,7 @@
             <?php }?>
         </select>
         <br><br>
-        <select name="realisateur">
+        <select name="realisateur" class="saisie">
             <option value="0">--- Sélection le réalisateur ---</option>
             <?php
                 $recordset = $db -> query("SELECT * FROM realisateur");
@@ -45,7 +45,8 @@
             <?php }?>
         </select>
         <br><br>
-        <input type="submit" value="Envoyer">
+        <input type="hidden" value="<?=$_GET["film_id"];?>" name="id">
+        <input type="submit" value="Envoyer" class="saisie" id="submit-button">
     </form>
 </body>
 </html>
