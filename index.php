@@ -10,15 +10,27 @@
     <title>Films</title>
 </head>
 <body>
-    <button>Nouveau film</button>
+    <button>
+        <a href="./formulaire.php">
+            Nouveau film
+        </a>
+    </button>
     <ol id="film-list">
         <?php $recordset = $db -> query("SELECT * FROM film");
         foreach($recordset as $row){?>
             <li class="film">
-                <span><?=htmlspecialchars("Id du film : ".$row["film_id"]." - ".$row["film_titre"]);?></span>
+                <span><?=htmlspecialchars($row["film_titre"]);?></span>
                 <div>
-                    <button>Modifier</button>
-                    <button>Supprimer</button>
+                    <a href="./formulaire.php?id=<?=$row["film_id"];?>">
+                    <button>
+                        Modifier
+                    </button>
+                    </a>
+                    <a href="./delete.php?id=<?=$row["film_id"];?>">
+                        <button>
+                            Supprimer
+                        </button>
+                    </a>
                 </div>
             </li>
         <?php } ?>

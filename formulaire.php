@@ -6,6 +6,7 @@
     $titre = "";
     $description = "";
     $date_de_sortie = "";
+    $duree_du_film = "";
     $age_id = 0;
     $realisateur_id = 0;
     if ($id>0){
@@ -15,12 +16,12 @@
             $titre = $row["film_titre"];
             $description = $row["film_description"];
             $date_de_sortie = $row["film_date"];
+            $duree_du_film =$row["film_duree"];
             $age_id = $row["film_age_id"];
             $realisateur_id = $row["film_realisateur_id"];
         }
     }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,15 +34,18 @@
 <body>
     <form method="post" action="traitement.php">
         <label for="">Titre du film</label><br>
-        <input type="text" name="titreFilm" class="saisie" value="<?=htmlspecialchars($titre);?>">
+        <input type="text" name="film_titre" class="saisie" value="<?=htmlspecialchars($titre);?>">
         <br><br>
         <label for="">Description du film</label><br>
-        <textarea name="descriptionFilm" id="description" cols="30" rows="10" class="saisie" value="<?=htmlspecialchars($description);?>"></textarea>
+        <textarea name="film_description" id="description" cols="30" rows="10" class="saisie"><?=htmlspecialchars($description);?></textarea>
         <br><br>
         <label for="">Date de sortie</label><br>
-        <input type="int" name="dateDeSortie" class="saisie" id="date-de-sortie" value="<?=htmlspecialchars($date_de_sortie);?>">
+        <input type="int" name="film_date" class="saisie" id="date-de-sortie" value="<?=htmlspecialchars($date_de_sortie);?>">
         <br><br>
-        <select name="age" class="saisie">
+        <label for="">Durée du film</label><br>
+        <input type="int" name="film_duree" class="saisie" value="<?=htmlspecialchars($duree_du_film);?>">
+        <br><br>
+        <select name="film_age_id" class="saisie">
             <option value="0">--- Sélection l'âge minimum ---</option>
             <?php
                 $recordset = $db -> query("SELECT * FROM age_categorie");
@@ -52,7 +56,7 @@
             <?php }?>
         </select>
         <br><br>
-        <select name="realisateur" class="saisie">
+        <select name="film_realisateur_id" class="saisie">
             <option value="0">--- Sélection le réalisateur ---</option>
             <?php
                 $recordset = $db -> query("SELECT * FROM realisateur");
@@ -64,7 +68,7 @@
             <?php }?>
         </select>
         <br><br>
-        <input type="hidden" name="id" value="<?=$id;?>">
+        <input type="hidden" name="film_id" value="<?=htmlspecialchars($id);?>">
         <input type="submit" value="Envoyer" class="saisie" id="submit-button">
     </form>
 </body>
