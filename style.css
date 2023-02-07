@@ -39,3 +39,9 @@ label{
     color: #fff;
     transition: all 0.2s ease-in-out;
 }
+#pagination li{
+    display: inline;
+}
+.disabled{
+    display: none;
+}

@@ -1,4 +1,16 @@
-<?php require_once "connect.php";?>
+<?php require_once "connect.php";
+    $nPage = 1;
+    if (isset($_GET["nPage"]) && $_GET["nPage"]>0){
+        $nPage = $_GET["nPage"];
+    }
+    $parPage = 10;
+    $sql = "SELECT COUNT(*) AS nb_film FROM film;";
+    $query = $db -> prepare($sql);
+    $query -> execute();
+    $result = $query-> fetch();
+    $nbFilm = (int)$result["nb_film"];
+    $pages = ceil ($nbFilm/$parPage);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,11 +24,14 @@
 <body>
     <button>
         <a href="./formulaire.php">
-            Nouveau film
+            Ajouter un nouveau film
         </a>
     </button>
     <ol id="film-list">
-        <?php $recordset = $db -> query("SELECT * FROM film");
+        <?php
+        $offset = ($nPage-1)*$parPage;
+        $sql2 = "SELECT * FROM film LIMIT $parPage OFFSET $offset;";
+        $recordset = $db -> query($sql2);
         foreach($recordset as $row){?>
             <li class="film">
                 <span><?=htmlspecialchars($row["film_titre"]);?></span>
@@ -26,7 +41,7 @@
                         Modifier
                     </button>
                     </a>
-                    <a href="./delete.php?id=<?=$row["film_id"];?>">
+                    <a href="./delete.php?id=<?=htmlspecialchars($row["film_id"]);?>">
                         <button>
                             Supprimer
                         </button>
@@ -35,5 +50,22 @@
             </li>
         <?php } ?>
     </ol>
+    <div id="pagination">
+        <ul>
+            <!-- Lien vers la page précédente (désactivé si on se trouve sur la 1ère page) -->
+            <li class="disabled">
+                <a href="">Précédente</a>
+            </li>
+            <?php
+            for ($i = 1; $i <= $pages; $i++){
+                echo "<li href=./index.php?nPage=$i>$i </li>";
+            }
+            ?>
+            <!-- Lien vers la page suivante (désactivé si on se trouve sur la dernière page) -->
+            <li class="disabled">
+                <a href="">Suivante</a>
+            </li>
+        </ul>
+    </div>
 </body>
 </html>
