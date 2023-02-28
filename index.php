@@ -58,7 +58,7 @@
             </li>
             <?php
             for ($i = 1; $i <= $pages; $i++){
-                echo "<li href=./index.php?nPage=$i>$i </li>";
+                echo "<li><a href=./index.php?nPage=$i>$i </a></li>";
             }
             ?>
             <!-- Lien vers la page suivante (désactivé si on se trouve sur la dernière page) -->
