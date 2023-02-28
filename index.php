@@ -54,7 +54,7 @@
         <ul>
             <!-- Lien vers la page précédente (désactivé si on se trouve sur la 1ère page) -->
             <li class="disabled">
-                <a href="">Précédente</a>
+                <?php echo "<a href=./index.php?nPage=$i-1> Précédent </a>"; ?>
             </li>
             <?php
             for ($i = 1; $i <= $pages; $i++){
@@ -63,7 +63,7 @@
             ?>
             <!-- Lien vers la page suivante (désactivé si on se trouve sur la dernière page) -->
             <li class="disabled">
-                <a href="">Suivante</a>
+                <?php echo "<a href=./index.php?nPage=$i+1> Suivant </a>"; ?>
             </li>
         </ul>
     </div>
