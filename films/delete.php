@@ -1,4 +1,4 @@
-<?php require_once "connect.php";
+<?php require_once "../connect.php";
 $id = 0;
 if (isset($_GET["id"]) && $_GET["id"]>0){
     $id = $_GET["id"];

@@ -1,4 +1,4 @@
-<?php require_once "connect.php";
+<?php require_once "../connect.php";
 
 // $titre = $_POST["titreFilm"];
 // $description = $_POST["descriptionFilm"];

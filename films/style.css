@@ -39,7 +39,7 @@ label{
     color: #fff;
     transition: all 0.2s ease-in-out;
 }
-#pagination li{
+.page-item{
     display: inline;
 }
 .disabled{
