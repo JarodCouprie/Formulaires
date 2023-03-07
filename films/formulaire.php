@@ -32,7 +32,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form method="post" action="traitement.php">
+    <form method="post" action="traitement.php" enctype="multipart/form-data">
         <label for="">Titre du film</label><br>
         <input type="text" name="film_titre" class="saisie" value="<?=htmlspecialchars($titre);?>">
         <br><br>
@@ -69,6 +69,9 @@
         </select>
         <br><br>
         <input type="hidden" name="film_id" value="<?=htmlspecialchars($id);?>">
+        <br><br>
+        <input type="file" name="film_image">
+        <br><br>
         <input type="submit" value="Envoyer" class="saisie" id="submit-button">
     </form>
 </body>

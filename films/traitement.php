@@ -9,8 +9,8 @@ $id = 0;
 $values = [];
 $sql2 = "";
 
-if (isset ($_GET["film_id"]) && $_GET["film_id"]>0){
-    $id = $_GET["film_id"];
+if (isset ($_POST["film_id"]) && $_POST["film_id"]>0){
+    $id = $_POST["film_id"];
 }
 if ($id>0){
     $sql = "UPDATE film SET ";
@@ -22,7 +22,7 @@ if ($id>0){
     }
     $sql = rtrim($sql,",");
     $sql.= " WHERE film_id=:film_id";
-    $values[":film_id"] = $_GET["film_id"];
+    $values[":film_id"] = $_POST["film_id"];
     echo $sql;
 }else{
     $sql = "INSERT INTO film(";
