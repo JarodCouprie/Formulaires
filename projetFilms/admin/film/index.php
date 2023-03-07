@@ -1,4 +1,6 @@
-<?php require_once "../connect.php";
+<?php
+require_once "../user/protect.php";
+require_once "../../../connect.php";
     if (isset($_GET["nPage"]) && $_GET["nPage"]>0){
         $nPage = $_GET["nPage"];
     }else{

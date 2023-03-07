@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "../connect.php"; // Voir pour créer un virtual host
+require_once "../../../connect.php"; // Voir pour créer un virtual host
 
 if (isset($_POST["mail"]) && isset($_POST["mdp"]) && ($_POST["mail"]!="") && ($_POST["mdp"]!="")){
     $sql = "SELECT * FROM user WHERE user_mail=:mail";
@@ -9,13 +9,11 @@ if (isset($_POST["mail"]) && isset($_POST["mdp"]) && ($_POST["mail"]!="") && ($_
     if ($row = $stmt -> fetch()){
         if (password_verify($_POST["mdp"],$row["user_mdp"])){
             $_SESSION["connected"]= "ok";
-            header("Location: index.php");
+            header("Location: ../film/index.php");
         }
     }
     $msg = "Oups!";
 }
-
-
 
 ?>
 <!DOCTYPE html>

@@ -1,4 +1,6 @@
-<?php require_once "../connect.php";
+<?php
+require_once "../../../connect.php";
+require_once "../../../functions.php";
 
 // $titre = $_POST["titreFilm"];
 // $description = $_POST["descriptionFilm"];
@@ -8,6 +10,12 @@
 $id = 0;
 $values = [];
 $sql2 = "";
+
+if (isset($_FILES["film_image"]) && $_FILES["film_image"]["name"]!=""){
+    $newFile = renommage($_FILES["film_image"]["name"],$_POST["film_titre"]);
+    move_uploaded_file($_FILES["film_image"]["tmp_name"],"../../upload/".$newFile);
+    //move_uploaded_file($_FILES["film_image"]["tmp_name"],$_SERVER["DOCUMENT_ROOT"]."/upload/".$_FILES["film_image"]["name"]);
+}
 
 if (isset ($_POST["film_id"]) && $_POST["film_id"]>0){
     $id = $_POST["film_id"];
