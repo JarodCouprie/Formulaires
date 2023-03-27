@@ -35,7 +35,7 @@ function load_image($filename, $width, $height, $newfilename) {
    };
 };
 
-load_image("./test.jpg", 200, 200, "SMTest.jpg");
+load_image("./test.jpg", 1600, 1200, "XLTest.jpg");
 
 
 
